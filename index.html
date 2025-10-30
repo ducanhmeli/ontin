@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bài kiểm tra: Thế giới số & Kỹ năng thông tin</title>
+<style>
+  body{font-family:Arial, Helvetica, sans-serif; background:#f4f8ff; color:#123; margin:0; padding:20px;}
+  .wrap{max-width:1000px;margin:10px auto;padding:18px;}
+  #copyright{
+    text-align:center;
+    font-size:18px;
+    color:#ff66b2; /* màu hồng */
+    font-weight:700;
+    animation: blink 1s step-start infinite;
+    margin-bottom:10px;
+  }
+  @keyframes blink {50% { opacity: 0; }}
+  h1{text-align:center;color:#1f4ed8;margin:6px 0 4px;}
+  p.lead{color:#345;margin-top:6px;text-align:center;}
+  .section-title{background:#e6eeff;padding:10px;border-radius:8px;margin:18px 0;color:#063a9e;font-weight:700}
+  .question{background:#fff;padding:12px;border-radius:8px;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+  .qtext{margin:0 0 8px 0}
+  label{display:block;margin:4px 0;cursor:pointer}
+  .controls{display:flex;gap:8px;align-items:center;margin-top:12px}
+  button{background:#1f4ed8;color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-size:15px}
+  button.reset{background:#6b7280}
+  .result{display:none;background:#fff;padding:12px;border-radius:8px;margin-top:18px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+  .correct{color:green;font-weight:700}
+  .wrong{color:red;font-weight:700}
+  .small{font-size:13px;color:#555}
+  .answer-line{margin:6px 0;padding:8px;border-radius:6px;background:#fbfcff}
+  .score{font-size:18px;font-weight:700;margin-top:10px}
+  .download {margin-left:auto}
+  @media (max-width:600px){.controls{flex-direction:column;align-items:stretch}.download{margin-left:0}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="copyright">© Nguyen Duc Anh</div>
+    <h1>BÀI KIỂM TRA: THẾ GIỚI SỐ & KỸ NĂNG THÔNG TIN</h1>
+    <p class="lead small">Làm hết bài rồi bấm <strong>"Nộp bài"</strong> — đáp án và điểm sẽ hiện sau khi nộp.</p>
+
+    <form id="quizForm" autocomplete="off">
+
+      <div class="section-title">Phần I — Trắc nghiệm (24 câu)</div>
+
+      <!-- 1 -->
+      <div class="question">
+        <p class="qtext"><b>1.</b> Khái niệm đúng nhất về Thế giới số là gì?</p>
+        <label><input type="radio" name="q1" value="A"> Chỉ là mạng Internet.</label>
+        <label><input type="radio" name="q1" value="B"> Là môi trường số gồm thiết bị, dịch vụ và thông tin được số hóa.</label>
+        <label><input type="radio" name="q1" value="C"> Một trò chơi trực tuyến.</label>
+        <label><input type="radio" name="q1" value="D"> Không có thật.</label>
+      </div>
+
+      <!-- 2 -->
+      <div class="question">
+        <p class="qtext"><b>2.</b> Ứng dụng phổ biến của công nghệ số trong Y tế là gì?</p>
+        <label><input type="radio" name="q2" value="A"> Xem phim trực tuyến.</label>
+        <label><input type="radio" name="q2" value="B"> Hồ sơ bệnh án điện tử và khám chữa bệnh từ xa (Telemedicine).</label>
+        <label><input type="radio" name="q2" value="C"> Gửi tin nhắn qua mạng xã hội.</label>
+        <label><input type="radio" name="q2" value="D"> Lập trình trò chơi.</label>
+      </div>
+
+      <!-- 3 -->
+      <div class="question">
+        <p class="qtext"><b>3.</b> Việc học trực tuyến (E-learning) mang lại lợi ích gì?</p>
+        <label><input type="radio" name="q3" value="A"> Yêu cầu phải mua nhiều sách giáo khoa hơn.</label>
+        <label><input type="radio" name="q3" value="B"> Cho phép người học chủ động về thời gian, địa điểm và tiếp cận kho tài liệu đa dạng.</label>
+        <label><input type="radio" name="q3" value="C"> Giảm khả năng tương tác với giáo viên.</label>
+        <label><input type="radio" name="q3" value="D"> Yêu cầu phải có máy tính cấu hình rất cao.</label>
+      </div>
+
+      <!-- 4 -->
+      <div class="question">
+        <p class="qtext"><b>4.</b> Ảnh hưởng tiêu cực lớn nhất khi lạm dụng thiết bị số là:</p>
+        <label><input type="radio" name="q4" value="A"> Máy tính bị hết pin nhanh hơn.</label>
+        <label><input type="radio" name="q4" value="B"> Gây căng thẳng mắt, rối loạn giấc ngủ và giảm khả năng tập trung, tương tác xã hội.</label>
+        <label><input type="radio" name="q4" value="C"> Bị người khác xem trộm thông tin.</label>
+        <label><input type="radio" name="q4" value="D"> Không còn hứng thú với các trò chơi.</label>
+      </div>
+
+      <!-- 5 -->
+      <div class="question">
+        <p class="qtext"><b>5.</b> Ứng dụng phù hợp để cải thiện kỹ năng Tiếng Anh giao tiếp:</p>
+        <label><input type="radio" name="q5" value="A"> Ứng dụng học ngôn ngữ trực tuyến (Duolingo, ELSA Speak).</label>
+        <label><input type="radio" name="q5" value="B"> Phần mềm soạn thảo văn bản.</label>
+        <label><input type="radio" name="q5" value="C"> Phần mềm diệt virus.</label>
+        <label><input type="radio" name="q5" value="D"> Ứng dụng quản lý tài chính cá nhân.</label>
+      </div>
+
+      <!-- 6 -->
+      <div class="question">
+        <p class="qtext"><b>6.</b> Trong doanh nghiệp, chuyển từ hồ sơ giấy sang hồ sơ số (Digitalization) có tác động lớn nhất là:</p>
+        <label><input type="radio" name="q6" value="A"> Tăng chi phí lưu trữ.</label>
+        <label><input type="radio" name="q6" value="B"> Tăng hiệu quả quản lý, giảm chi phí lưu trữ và tăng khả năng chia sẻ thông tin.</label>
+        <label><input type="radio" name="q6" value="C"> Bắt buộc phải mua thêm máy in.</label>
+        <label><input type="radio" name="q6" value="D"> Giảm nhu cầu sử dụng Internet.</label>
+      </div>
+
+      <!-- 7 -->
+      <div class="question">
+        <p class="qtext"><b>7.</b> Một người nông dân dùng cảm biến và điện thoại để điều khiển tưới tự động là ứng dụng của thế giới số trong lĩnh vực nào?</p>
+        <label><input type="radio" name="q7" value="A"> Y tế.</label>
+        <label><input type="radio" name="q7" value="B"> Nông nghiệp thông minh (Smart Agriculture).</label>
+        <label><input type="radio" name="q7" value="C"> Giao thông.</label>
+        <label><input type="radio" name="q7" value="D"> Giải trí.</label>
+      </div>
+
+      <!-- 8 -->
+      <div class="question">
+        <p class="qtext"><b>8.</b> Mạng xã hội mang lại lợi ích gì cho cộng đồng?</p>
+        <label><input type="radio" name="q8" value="A"> Làm tăng lượng tin giả (fake news).</label>
+        <label><input type="radio" name="q8" value="B"> Tạo kênh giao tiếp, chia sẻ thông tin và kết nối mọi người dễ dàng, nhanh chóng hơn.</label>
+        <label><input type="radio" name="q8" value="C"> Chỉ dành cho mục đích giải trí.</label>
+        <label><input type="radio" name="q8" value="D"> Giúp giảm thiểu tương tác xã hội.</label>
+      </div>
+
+      <!-- 9 -->
+      <div class="question">
+        <p class="qtext"><b>9.</b> Thu thập thông tin là gì?</p>
+        <label><input type="radio" name="q9" value="A"> Việc chỉ xem thông tin trên Internet.</label>
+        <label><input type="radio" name="q9" value="B"> Quá trình tìm kiếm, sàng lọc và tập hợp các dữ liệu/thông tin liên quan đến mục đích cụ thể.</label>
+        <label><input type="radio" name="q9" value="C"> Sao chép toàn bộ một trang web.</label>
+        <label><input type="radio" name="q9" value="D"> Chỉ là việc chụp ảnh tài liệu.</label>
+      </div>
+
+      <!-- 10 -->
+      <div class="question">
+        <p class="qtext"><b>10.</b> Tiêu chí đánh giá thông tin quan trọng nhất là:</p>
+        <label><input type="radio" name="q10" value="A"> Màu sắc và font chữ.</label>
+        <label><input type="radio" name="q10" value="B"> Tính chính xác, tính khách quan và tính cập nhật của thông tin.</label>
+        <label><input type="radio" name="q10" value="C"> Số lượng hình ảnh minh họa.</label>
+        <label><input type="radio" name="q10" value="D"> Số lượt chia sẻ trên mạng xã hội.</label>
+      </div>
+
+      <!-- 11 -->
+      <div class="question">
+        <p class="qtext"><b>11.</b> Mục đích chính của việc lưu trữ thông tin là:</p>
+        <label><input type="radio" name="q11" value="A"> Để người khác không thể xem được.</label>
+        <label><input type="radio" name="q11" value="B"> Bảo toàn và bảo mật thông tin, giúp thông tin có thể truy xuất và sử dụng lại khi cần.</label>
+        <label><input type="radio" name="q11" value="C"> Làm đầy bộ nhớ máy tính.</label>
+        <label><input type="radio" name="q11" value="D"> Chỉ để lưu ảnh cá nhân.</label>
+      </div>
+
+      <!-- 12 -->
+      <div class="question">
+        <p class="qtext"><b>12.</b> Trình bày báo cáo khoa học phức tạp với nhiều biểu đồ: công cụ tốt nhất là?</p>
+        <label><input type="radio" name="q12" value="A"> Thư điện tử (Email).</label>
+        <label><input type="radio" name="q12" value="B"> Ứng dụng nhắn tin.</label>
+        <label><input type="radio" name="q12" value="C"> Phần mềm trình chiếu (PowerPoint, Google Slides) kết hợp biểu đồ từ bảng tính.</label>
+        <label><input type="radio" name="q12" value="D"> Phần mềm nghe nhạc.</label>
+      </div>
+
+      <!-- 13 -->
+      <div class="question">
+        <p class="qtext"><b>13.</b> Sau khi thu thập nhiều tài liệu, việc nên làm đầu tiên là:</p>
+        <label><input type="radio" name="q13" value="A"> Bắt đầu sao chép ngay vào bài làm.</label>
+        <label><input type="radio" name="q13" value="B"> Sắp xếp, tổ chức và sàng lọc các tài liệu đó để loại bỏ thông tin trùng lặp hoặc không đáng tin cậy.</label>
+        <label><input type="radio" name="q13" value="C"> Xóa hết các tệp tin cũ.</label>
+        <label><input type="radio" name="q13" value="D"> Đặt lại tên thư mục.</label>
+      </div>
+
+      <!-- 14 -->
+      <div class="question">
+        <p class="qtext"><b>14.</b> Việc lưu trữ trên dịch vụ đám mây so với ổ đĩa cứng cá nhân mang lại:</p>
+        <label><input type="radio" name="q14" value="A"> Dung lượng luôn không giới hạn.</label>
+        <label><input type="radio" name="q14" value="B"> Cho phép truy cập và chia sẻ dữ liệu dễ dàng từ nhiều thiết bị khác nhau.</label>
+        <label><input type="radio" name="q14" value="C"> Tốc độ truyền luôn nhanh hơn.</label>
+        <label><input type="radio" name="q14" value="D"> Không cần kết nối Internet.</label>
+      </div>
+
+      <!-- 15 -->
+      <div class="question">
+        <p class="qtext"><b>15.</b> Quyền riêng tư của cá nhân trên môi trường mạng được pháp luật bảo vệ như thế nào?</p>
+        <label><input type="radio" name="q15" value="A"> Mọi thông tin cá nhân đều có thể được công khai.</label>
+        <label><input type="radio" name="q15" value="B"> Cá nhân có quyền kiểm soát việc thu thập, sử dụng và chia sẻ thông tin cá nhân của mình.</label>
+        <label><input type="radio" name="q15" value="C"> Chỉ tài khoản trả phí mới được bảo vệ.</label>
+        <label><input type="radio" name="q15" value="D"> Quyền riêng tư không được luật pháp quan tâm.</label>
+      </div>
+
+      <!-- 16 -->
+      <div class="question">
+        <p class="qtext"><b>16.</b> Bản quyền trong môi trường số là gì?</p>
+        <label><input type="radio" name="q16" value="A"> Quyền được sao chép bất kỳ nội dung nào trên mạng.</label>
+        <label><input type="radio" name="q16" value="B"> Quyền độc quyền của tác giả đối với tác phẩm của mình (phần mềm, nhạc, ảnh, bài viết).</label>
+        <label><input type="radio" name="q16" value="C"> Quyền được sử dụng mọi phần mềm miễn phí.</label>
+        <label><input type="radio" name="q16" value="D"> Quyền được thay đổi nội dung của người khác.</label>
+      </div>
+
+      <!-- 17 -->
+      <div class="question">
+        <p class="qtext"><b>17.</b> Hành vi nào sau đây là vi phạm bản quyền?</p>
+        <label><input type="radio" name="q17" value="A"> Mua một đĩa CD nhạc hợp pháp.</label>
+        <label><input type="radio" name="q17" value="B"> Tự viết một bài thơ và chia sẻ.</label>
+        <label><input type="radio" name="q17" value="C"> Tải lậu và phân phối lại một bộ phim có bản quyền trên mạng xã hội.</label>
+        <label><input type="radio" name="q17" value="D"> Đọc sách điện tử có trả phí.</label>
+      </div>
+
+            <!-- 18 -->
+      <div class="question">
+        <p class="qtext"><b>18.</b> Xử lý vi phạm trên mạng là gì?</p>
+        <label><input type="radio" name="q18" value="A"> Chỉ là việc xóa các bình luận tiêu cực.</label>
+        <label><input type="radio" name="q18" value="B"> Áp dụng các biện pháp (cảnh cáo, khóa tài khoản, xử phạt hành chính/hình sự) đối với hành vi vi phạm.</label>
+        <label><input type="radio" name="q18" value="C"> Bắt buộc phải công khai người vi phạm.</label>
+        <label><input type="radio" name="q18" value="D"> Chỉ đơn giản là bỏ qua.</label>
+      </div>
+
+      <!-- 19 -->
+      <div class="question">
+        <p class="qtext"><b>19.</b> Nếu bạn thấy ảnh đẹp trên mạng và muốn dùng làm hình nền, hành động phù hợp nhất là:</p>
+        <label><input type="radio" name="q19" value="A"> Tải về và đăng lại như thể là ảnh của mình.</label>
+        <label><input type="radio" name="q19" value="B"> Tải về để dùng cho mục đích cá nhân (hình nền) và không chia sẻ công khai.</label>
+        <label><input type="radio" name="q19" value="C"> Dùng phần mềm xóa chữ ký tác giả.</label>
+        <label><input type="radio" name="q19" value="D"> Bán bức ảnh đó cho người khác.</label>
+      </div>
+
+      <!-- 20 -->
+      <div class="question">
+        <p class="qtext"><b>20.</b> Khi phát hiện người gửi spam/lừa đảo, bạn nên:</p>
+        <label><input type="radio" name="q20" value="A"> Nhắn tin chửi lại họ.</label>
+        <label><input type="radio" name="q20" value="B"> Báo cáo tài khoản cho nền tảng và chặn (block) người đó.</label>
+        <label><input type="radio" name="q20" value="C"> Cung cấp thông tin cá nhân của họ lên mạng.</label>
+        <label><input type="radio" name="q20" value="D"> Cố gắng hack tài khoản của họ.</label>
+      </div>
+
+      <!-- 21 -->
+      <div class="question">
+        <p class="qtext"><b>21.</b> Để đảm bảo văn hóa ứng xử trên mạng khi tham gia diễn đàn học tập, bạn nên:</p>
+        <label><input type="radio" name="q21" value="A"> Sử dụng từ viết tắt khó hiểu.</label>
+        <label><input type="radio" name="q21" value="B"> Gửi các tin nhắn giận dữ để bày tỏ ý kiến.</label>
+        <label><input type="radio" name="q21" value="C"> Sử dụng ngôn ngữ lịch sự, tôn trọng ý kiến người khác và tập trung vào chủ đề thảo luận.</label>
+        <label><input type="radio" name="q21" value="D"> Công khai thông tin cá nhân của bạn bè.</label>
+      </div>
+
+      <!-- 22 -->
+      <div class="question">
+        <p class="qtext"><b>22.</b> Nếu vô tình làm lộ mật khẩu, việc đầu tiên nên làm là:</p>
+        <label><input type="radio" name="q22" value="A"> Xóa tất cả bài đăng cũ.</label>
+        <label><input type="radio" name="q22" value="B"> Thay đổi mật khẩu ngay lập tức và bật xác thực hai yếu tố.</label>
+        <label><input type="radio" name="q22" value="C"> Đăng xuất và chờ tài khoản tự khóa.</label>
+        <label><input type="radio" name="q22" value="D"> Báo cáo tài khoản là giả mạo.</label>
+      </div>
+
+      <!-- 23 -->
+      <div class="question">
+        <p class="qtext"><b>23.</b> Trình bày kết quả hiệu quả yêu cầu:</p>
+        <label><input type="radio" name="q23" value="A"> Phải dùng PowerPoint.</label>
+        <label><input type="radio" name="q23" value="B"> Sử dụng quá nhiều màu sắc và hiệu ứng.</label>
+        <label><input type="radio" name="q23" value="C"> Nội dung rõ ràng, có cấu trúc logic và dùng hình ảnh/biểu đồ hỗ trợ.</label>
+        <label><input type="radio" name="q23" value="D"> Phải có lời nói hoa mỹ dài dòng.</label>
+      </div>
+
+      <!-- 24 -->
+      <div class="question">
+        <p class="qtext"><b>24.</b> Tiêu chí giúp đánh giá tính cập nhật của một bài viết về "Công nghệ AI" là:</p>
+        <label><input type="radio" name="q24" value="A"> Bài viết có hình ảnh đẹp.</label>
+        <label><input type="radio" name="q24" value="B"> Xem ngày, tháng, năm xuất bản gần đây nhất của bài viết.</label>
+        <label><input type="radio" name="q24" value="C"> Độ dài của bài viết.</label>
+        <label><input type="radio" name="q24" value="D"> Có nhiều từ chuyên ngành.</label>
+      </div>
+
+      <div class="section-title">Phần II — Trắc nghiệm Đúng / Sai (25 câu)</div>
+
+      <!-- 25 -->
+      <div class="question">
+        <p class="qtext"><b>25.</b> Việc sử dụng các thiết bị số một cách điều độ sẽ giảm thiểu các ảnh hưởng tiêu cực đến sức khỏe.</p>
+        <label><input type="radio" name="q25" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q25" value="S"> Sai</label>
+      </div>
+
+      <!-- 26 -->
+      <div class="question">
+        <p class="qtext"><b>26.</b> Ứng dụng của thế giới số không bao gồm lĩnh vực giáo dục và y tế.</p>
+        <label><input type="radio" name="q26" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q26" value="S"> Sai</label>
+      </div>
+
+      <!-- 27 -->
+      <div class="question">
+        <p class="qtext"><b>27.</b> Công nghệ số giúp công việc và giao tiếp trở nên tiện lợi, nhanh chóng hơn.</p>
+        <label><input type="radio" name="q27" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q27" value="S"> Sai</label>
+      </div>
+
+      <!-- 28 -->
+      <div class="question">
+        <p class="qtext"><b>28.</b> Thế giới số chỉ bao gồm các trò chơi trực tuyến.</p>
+        <label><input type="radio" name="q28" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q28" value="S"> Sai</label>
+      </div>
+
+      <!-- 29 -->
+      <div class="question">
+        <p class="qtext"><b>29.</b> Việc tiếp cận thông tin sai lệch (tin giả) là một trong những ảnh hưởng tiêu cực của thế giới số.</p>
+        <label><input type="radio" name="q29" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q29" value="S"> Sai</label>
+      </div>
+
+      <!-- 30 -->
+      <div class="question">
+        <p class="qtext"><b>30.</b> Thế giới số không thể giúp chúng ta bảo vệ môi trường.</p>
+        <label><input type="radio" name="q30" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q30" value="S"> Sai</label>
+      </div>
+
+      <!-- 31 -->
+      <div class="question">
+        <p class="qtext"><b>31.</b> Sự phát triển của thế giới số không làm thay đổi các công việc truyền thống.</p>
+        <label><input type="radio" name="q31" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q31" value="S"> Sai</label>
+      </div>
+
+      <!-- 32 -->
+      <div class="question">
+        <p class="qtext"><b>32.</b> Thế giới số tạo ra nhiều cơ hội mới cho các ngành nghề sáng tạo.</p>
+        <label><input type="radio" name="q32" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q32" value="S"> Sai</label>
+      </div>
+
+      <!-- 33 -->
+      <div class="question">
+        <p class="qtext"><b>33.</b> Khi thu thập thông tin, cần phải có mục đích rõ ràng và nguồn đáng tin cậy.</p>
+        <label><input type="radio" name="q33" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q33" value="S"> Sai</label>
+      </div>
+
+      <!-- 34 -->
+      <div class="question">
+        <p class="qtext"><b>34.</b> Thông tin có nhiều lượt chia sẻ trên mạng xã hội luôn là thông tin chính xác.</p>
+        <label><input type="radio" name="q34" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q34" value="S"> Sai</label>
+      </div>
+
+      <!-- 35 -->
+      <div class="question">
+        <p class="qtext"><b>35.</b> Việc đánh giá thông tin là không cần thiết nếu thông tin đó có hình ảnh minh họa đẹp.</p>
+        <label><input type="radio" name="q35" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q35" value="S"> Sai</label>
+      </div>
+
+      <!-- 36 -->
+      <div class="question">
+        <p class="qtext"><b>36.</b> Thông tin từ các tổ chức chính phủ, giáo dục thường có tính chính xác cao.</p>
+        <label><input type="radio" name="q36" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q36" value="S"> Sai</label>
+      </div>
+
+      <!-- 37 -->
+      <div class="question">
+        <p class="qtext"><b>37.</b> Để bảo mật tài liệu quan trọng, bạn nên lưu trữ đồng thời trên cả ổ đĩa cá nhân và dịch vụ đám mây.</p>
+        <label><input type="radio" name="q37" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q37" value="S"> Sai</label>
+      </div>
+
+      <!-- 38 -->
+      <div class="question">
+        <p class="qtext"><b>38.</b> Khi trình bày kết quả, việc sử dụng thuật ngữ chuyên môn phức tạp mà không giải thích sẽ làm cho bài trình bày hiệu quả hơn.</p>
+        <label><input type="radio" name="q38" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q38" value="S"> Sai</label>
+      </div>
+
+      <!-- 39 -->
+      <div class="question">
+        <p class="qtext"><b>39.</b> Dữ liệu sau khi xử lý xong không cần phải lưu trữ lại.</p>
+        <label><input type="radio" name="q39" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q39" value="S"> Sai</label>
+      </div>
+
+      <!-- 40 -->
+      <div class="question">
+        <p class="qtext"><b>40.</b> Sơ đồ tư duy (Mind map) là một cách trình bày kết quả trực quan và dễ hiểu.</p>
+        <label><input type="radio" name="q40" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q40" value="S"> Sai</label>
+      </div>
+
+      <!-- 41 -->
+      <div class="question">
+        <p class="qtext"><b>41.</b> Khi một người chia sẻ thông tin cá nhân công khai, người khác có quyền dùng thông tin đó cho mục đích thương mại.</p>
+        <label><input type="radio" name="q41" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q41" value="S"> Sai</label>
+      </div>
+
+      <!-- 42 -->
+      <div class="question">
+        <p class="qtext"><b>42.</b> Trích dẫn nguồn khi sử dụng hình ảnh từ Internet là hành vi thể hiện tôn trọng bản quyền.</p>
+        <label><input type="radio" name="q42" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q42" value="S"> Sai</label>
+      </div>
+
+      <!-- 43 -->
+      <div class="question">
+        <p class="qtext"><b>43.</b> Sử dụng phần mềm bẻ khóa (crack) là vi phạm pháp luật về bản quyền.</p>
+        <label><input type="radio" name="q43" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q43" value="S"> Sai</label>
+      </div>
+
+      <!-- 44 -->
+      <div class="question">
+        <p class="qtext"><b>44.</b> Bạn có quyền xem trộm tin nhắn của bạn bè trên điện thoại nếu họ để quên.</p>
+        <label><input type="radio" name="q44" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q44" value="S"> Sai</label>
+      </div>
+
+      <!-- 45 -->
+      <div class="question">
+        <p class="qtext"><b>45.</b> Đặt mật khẩu là ngày sinh là cách đặt mật khẩu mạnh và an toàn.</p>
+        <label><input type="radio" name="q45" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q45" value="S"> Sai</label>
+      </div>
+
+      <!-- 46 -->
+      <div class="question">
+        <p class="qtext"><b>46.</b> Bạn nên cảnh giác với yêu cầu cung cấp mật khẩu hoặc thông tin cá nhân từ người lạ qua Email.</p>
+        <label><input type="radio" name="q46" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q46" value="S"> Sai</label>
+      </div>
+
+      <!-- 47 -->
+      <div class="question">
+        <p class="qtext"><b>47.</b> Kích hoạt xác thực hai yếu tố (2FA) là biện pháp hiệu quả để bảo vệ tài khoản.</p>
+        <label><input type="radio" name="q47" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q47" value="S"> Sai</label>
+      </div>
+
+      <!-- 48 -->
+      <div class="question">
+        <p class="qtext"><b>48.</b> Để tiện lợi, bạn có thể lưu danh sách mật khẩu của mình trong tệp văn bản không được bảo vệ.</p>
+        <label><input type="radio" name="q48" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q48" value="S"> Sai</label>
+      </div>
+
+      <!-- 49 -->
+      <div class="question">
+        <p class="qtext"><b>49.</b> Nếu bạn bị đe dọa trên mạng, bạn nên giữ im lặng và không nói cho ai biết.</p>
+        <label><input type="radio" name="q49" value="Đ"> Đúng</label>
+        <label><input type="radio" name="q49" value="S"> Sai</label>
+      </div>
+
+      <div class="controls">
+        <button type="button" id="submitBtn">Nộp bài</button>
+        <button type="button" id="resetBtn" class="reset">Làm lại</button>
+        <div class="download small download">
+          <button id="downloadBtn" type="button">Tải file (.html)</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div id="result" class="result"></div>
+  </div>
+
+<script>
+// đáp án đúng (mapping)
+const correct = {
+  // trắc nghiệm 1..24
+  q1:"B", q2:"B", q3:"B", q4:"B", q5:"A",
+  q6:"B", q7:"B", q8:"B", q9:"B", q10:"B",
+  q11:"B", q12:"C", q13:"B", q14:"B", q15:"B",
+  q16:"B", q17:"C", q18:"B", q19:"B", q20:"B",
+  q21:"C", q22:"B", q23:"C", q24:"B",
+  // đúng/sai 25..49
+  q25:"Đ", q26:"S", q27:"Đ", q28:"S", q29:"Đ",
+  q30:"S", q31:"S", q32:"Đ", q33:"Đ", q34:"S",
+  q35:"S", q36:"Đ", q37:"Đ", q38:"S", q39:"S",
+  q40:"Đ", q41:"S", q42:"Đ", q43:"Đ", q44:"S",
+  q45:"S", q46:"Đ", q47:"Đ", q48:"S", q49:"S"
+};
+
+document.getElementById('submitBtn').addEventListener('click', function(){
+  const total = Object.keys(correct).length;
+  let score = 0;
+  let out = '<h2>Kết quả</h2>';
+  out += '<div class="small">Ghi chú: ✅ = đúng, ❌ = sai hoặc chưa chọn. Đáp án đúng sẽ hiển thị bên cạnh.</div>';
+
+  for (let i=1;i<=49;i++){
+    let q = 'q'+i;
+    let sel = document.querySelector('input[name="'+q+'"]:checked');
+    let user = sel ? sel.value : null;
+    const ans = correct[q];
+    if(user === null){
+      out += `<div class="answer-line"><b>${i}.</b> ❌ <span class="wrong">Chưa chọn</span> — Đáp án đúng: <span class="correct">${ans}</span></div>`;
+    } else if(user === ans){
+      score++;
+      out += `<div class="answer-line"><b>${i}.</b> ✅ <span class="correct">Đúng</span></div>`;
+    } else {
+      out += `<div class="answer-line"><b>${i}.</b> ❌ <span class="wrong">Sai</span> — Đáp án đúng: <span class="correct">${ans}</span></div>`;
+    }
+  }
+
+  const percent = Math.round((score/total)*100);
+  out += `<div class="score">Điểm: <strong>${score}/${total}</strong> (${percent}%)</div>`;
+  const passText = percent>=50 ? 'Đạt' : 'Chưa đạt';
+  out += `<div class="small">Kết luận: <strong>${passText}</strong></div>`;
+
+  const resultBox = document.getElementById('result');
+  resultBox.innerHTML = out;
+  resultBox.style.display = 'block';
+  // cuộn tới kết quả
+  resultBox.scrollIntoView({behavior:'smooth'});
+  // disable submit to tránh gửi lại
+  document.getElementById('submitBtn').disabled = true;
+});
+
+document.getElementById('resetBtn').addEventListener('click', function(){
+  // reset form
+  document.getElementById('quizForm').reset();
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('result').innerHTML = '';
+  document.getElementById('submitBtn').disabled = false;
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+//
+document.getElementById('downloadBtn').addEventListener('click', function(){
+  // lấy nội dung HTML (cả file)
+  const doctype = '<!DOCTYPE html>\\n';
+  // build the full html from current document; simplest: use outerHTML of documentElement
+  const htmlContent = doctype + document.documentElement.outerHTML;
+  const blob = new Blob([htmlContent], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'bai_kiem_tra_the_gioi_so.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
