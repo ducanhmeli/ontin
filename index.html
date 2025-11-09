@@ -58,7 +58,6 @@
       align-items: center;
     }
 
-    /* 🔽 Dòng chữ chạy ở cuối màn hình */
     #marquee-text {
       position: absolute;
       bottom: 10px;
@@ -95,27 +94,10 @@
 
   <button class="control-btn" id="toggleButton">⏸️ Dừng</button>
 
-<!-- 🔊 Nhạc nền vũ trụ -->
-<audio id="bgMusic" src="vutru.mp3" autoplay loop muted></audio>
-
-<script>
-  const bgMusic = document.getElementById('bgMusic');
-  bgMusic.volume = 0.4;
-
-  // Một số trình duyệt yêu cầu kích hoạt sau khi người dùng tương tác đầu tiên
-  document.addEventListener('click', function enableMusic() {
-    bgMusic.muted = false;
-    bgMusic.play().catch(err => console.log('Không phát được nhạc:', err));
-    document.removeEventListener('click', enableMusic);
-  });
-
-  // Safari cần thêm khởi động âm thanh sau khi di chuyển chuột hoặc chạm màn hình
-  document.addEventListener('mousemove', function startMusic() {
-    bgMusic.muted = false;
-    bgMusic.play().catch(()=>{});
-    document.removeEventListener('mousemove', startMusic);
-  });
-</script>
+  <!-- 🔊 Nhạc nền vũ trụ -->
+  <audio id="bgMusic" autoplay loop muted>
+    <source src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_ef2a37c4b7.mp3?filename=space-ambient-background-112199.mp3" type="audio/mpeg">
+  </audio>
 
   <!-- 🔽 Dòng chữ chạy -->
   <div id="marquee-text">
@@ -142,7 +124,7 @@
 
     // --- ẢNH NỀN VŨ TRỤ ---
     const textureLoader = new THREE.TextureLoader();
-    const spaceTexture = textureLoader.load('sao.jpg');
+    const spaceTexture = textureLoader.load('sao.jpg'); // ảnh nền (đặt cùng thư mục)
     scene.background = spaceTexture;
 
     // --- THAM SỐ VẬT LÝ ---
@@ -242,15 +224,18 @@
       simulationSpeed = parseFloat(event.target.value); 
     });
 
-    // --- NHẠC NỀN TỰ PHÁT ---
+    // --- Âm nhạc tự động ---
     const bgMusic = document.getElementById('bgMusic');
     bgMusic.volume = 0.4;
-
-    // Khi người dùng click lần đầu → bật tiếng
     document.addEventListener('click', function enableMusic() {
       bgMusic.muted = false;
-      bgMusic.play();
+      bgMusic.play().catch(()=>{});
       document.removeEventListener('click', enableMusic);
+    });
+    document.addEventListener('mousemove', function startMusic() {
+      bgMusic.muted = false;
+      bgMusic.play().catch(()=>{});
+      document.removeEventListener('mousemove', startMusic);
     });
   </script>
 </body>
