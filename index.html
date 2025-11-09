@@ -129,7 +129,7 @@
     const MOON_ORBIT_RADIUS = 5; 
     const BASE_SPEED = 0.0003; 
 
-    // 🔁 ĐIỀU CHỈNH TỐC ĐỘ (theo yêu cầu)
+    // 🔁 ĐIỀU CHỈNH TỐC ĐỘ
     const SUN_ROT_SPEED = 0.00023;       // 🔆 Mặt Trời quay nhanh hơn
     const EARTH_ORBIT_SPEED = BASE_SPEED * 0.7;   // 🌍 Trái Đất quay quanh chậm hơn
     const EARTH_ROT_SPEED = BASE_SPEED * 250;     // 🌎 Trái Đất tự quay chậm hơn
@@ -195,13 +195,21 @@
     camera.lookAt(sun.position); 
 
     // --- ANIMATION LOOP ---
+    let time = 0;
     function animate() {
       requestAnimationFrame(animate);
       controls.update(); 
 
       if (isRunning) {
         const speed = simulationSpeed; 
+        time += BASE_SPEED * speed;
+
+        // 🌞 Mặt Trời quay và chuyển động nhẹ quanh tâm
         sun.rotation.y += SUN_ROT_SPEED * speed;
+        sun.position.x = Math.sin(time * 0.5) * 2;  // dao động nhẹ trái phải
+        sun.position.z = Math.cos(time * 0.5) * 2;  // dao động trước sau
+
+        // 🌍 Trái Đất & Mặt Trăng
         earthMesh.rotation.y += EARTH_ROT_SPEED * speed;
         moon.rotation.y += EARTH_ROT_SPEED * speed;
         earthOrbit.rotation.y += EARTH_ORBIT_SPEED * speed;
