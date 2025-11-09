@@ -95,8 +95,12 @@
 
   <button class="control-btn" id="toggleButton">⏸️ Dừng</button>
 
+  <!-- 🔊 Nhạc nền tự động phát -->
+  <audio id="bgMusic" src="vutru.mp3" autoplay loop muted></audio>
+
+  <!-- 🔽 Dòng chữ chạy -->
   <div id="marquee-text">
-    <span>🌌 Mô Phỏng Chuyển Động Hệ Mặt Trời - CHỈ MẶT TRỜI QUAY 🌍 | Tác giả: Nguyễn Đức Anh 9A | Giáo Viên Hướng Dẫn: Nguyễn Duy Quyền 🌞</span>
+    <span>🌌 Mô Phỏng Chuyển Động Hệ Mặt Trời - Trái Đất - Mặt Trăng 🌍 | Tác giả: Nguyễn Đức Anh 9A | Giáo Viên Hướng Dẫn: Nguyễn Duy Quyền 🌞</span>
   </div>
 
   <script>
@@ -119,7 +123,7 @@
 
     // --- ẢNH NỀN VŨ TRỤ ---
     const textureLoader = new THREE.TextureLoader();
-    const spaceTexture = textureLoader.load('sao.jpg'); // ảnh nền (đặt cùng thư mục)
+    const spaceTexture = textureLoader.load('sao.jpg');
     scene.background = spaceTexture;
 
     // --- THAM SỐ VẬT LÝ ---
@@ -151,7 +155,7 @@
     // --- TRÁI ĐẤT ---
     const earthGeometry = new THREE.SphereGeometry(1.5, 32, 32);
     const earthMaterial = new THREE.MeshPhongMaterial({ 
-      map: textureLoader.load('earth.gif'),
+      map: textureLoader.load('earth.jpg'),
       specular: 0x333333,
       shininess: 15
     });
@@ -167,7 +171,7 @@
     // --- MẶT TRĂNG ---
     const moonGeometry = new THREE.SphereGeometry(0.4, 32, 32);
     const moonMaterial = new THREE.MeshPhongMaterial({
-      map: textureLoader.load('moon.gif')
+      map: textureLoader.load('moon.jpg')
     });
     const moon = new THREE.Mesh(moonGeometry, moonMaterial);
     moon.position.set(MOON_ORBIT_RADIUS, 0, 0); 
@@ -197,16 +201,11 @@
 
       if (isRunning) {
         const speed = simulationSpeed; 
-        
-        // 🚀 CHỈ GIỮ LẠI DÒNG NÀY ĐỂ MẶT TRỜI QUAY
         sun.rotation.y += SUN_ROT_SPEED * speed;
-        
-        // VÔ HIỆU HÓA CHUYỂN ĐỘNG CỦA TRÁI ĐẤT & MẶT TRĂNG (Giữ nguyên các dòng này không có thay đổi logic)
-        // Dữ liệu ban đầu:
-        // earthMesh.rotation.y += EARTH_ROT_SPEED * speed;
-        // moon.rotation.y += EARTH_ROT_SPEED * speed;
-        // earthOrbit.rotation.y += EARTH_ORBIT_SPEED * speed;
-        // moonOrbit.rotation.y += MOON_ORBIT_SPEED * speed;
+        earthMesh.rotation.y += EARTH_ROT_SPEED * speed;
+        moon.rotation.y += EARTH_ROT_SPEED * speed;
+        earthOrbit.rotation.y += EARTH_ORBIT_SPEED * speed;
+        moonOrbit.rotation.y += MOON_ORBIT_SPEED * speed;
       }
 
       renderer.render(scene, camera);
@@ -222,6 +221,17 @@
     });
     speedSlider.addEventListener('input', (event) => {
       simulationSpeed = parseFloat(event.target.value); 
+    });
+
+    // --- NHẠC NỀN TỰ PHÁT ---
+    const bgMusic = document.getElementById('bgMusic');
+    bgMusic.volume = 0.4;
+
+    // Khi người dùng click lần đầu → bật tiếng
+    document.addEventListener('click', function enableMusic() {
+      bgMusic.muted = false;
+      bgMusic.play();
+      document.removeEventListener('click', enableMusic);
     });
   </script>
 </body>
