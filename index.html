@@ -130,9 +130,9 @@
     const BASE_SPEED = 0.0003; 
 
     // ⚙️ Điều chỉnh tốc độ quay và quỹ đạo
-    const SUN_ROT_SPEED = 0.0002;        // 🌞 Mặt Trời quay nhanh hơn (nhìn rõ)
+    const SUN_ROT_SPEED = 0.0001;        // Mặt Trời quay nhanh hơn (có thể nhìn thấy)
     const EARTH_ORBIT_SPEED = BASE_SPEED * 1; 
-    const EARTH_ROT_SPEED = BASE_SPEED * 120;  // 🌍 Trái Đất quay chậm lại
+    const EARTH_ROT_SPEED = BASE_SPEED * 120;  // 🌍 Trái Đất quay chậm lại (trước là 365)
     const MOON_ORBIT_SPEED = BASE_SPEED * 12.17; 
     const MOON_ROT_SPEED = BASE_SPEED * 120;   // 🌙 Mặt Trăng quay chậm hơn
 
@@ -140,19 +140,17 @@
     let isRunning = true;
 
     // --- MẶT TRỜI ---
-    const sunGeometry = new THREE.SphereGeometry(4, 64, 64); 
-    const sunMaterial = new THREE.MeshPhongMaterial({ 
+    const sunGeometry = new THREE.SphereGeometry(4, 32, 32); 
+    const sunMaterial = new THREE.MeshBasicMaterial({ 
       map: textureLoader.load('sun.jpg'),
-      emissive: 0xffff66,   // phát sáng nhẹ
-      emissiveIntensity: 0.5,
-      shininess: 10
+      color: 0xffffee 
     });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     scene.add(sun);
 
     const light = new THREE.PointLight(0xffffff, 8, 0);
     sun.add(light);
-    const ambientLight = new THREE.AmbientLight(0x080808);
+    const ambientLight = new THREE.AmbientLight(0x050505);
     scene.add(ambientLight);
 
     // --- TRÁI ĐẤT ---
@@ -204,10 +202,15 @@
 
       if (isRunning) {
         const speed = simulationSpeed; 
-        sun.rotation.y += SUN_ROT_SPEED * speed;      // 🌞 Mặt Trời quay
+        // 🌞 Mặt Trời quay quanh trục
+        sun.rotation.y += SUN_ROT_SPEED * speed;
+
+        // 🌍 Trái Đất quay quanh trục và quay quanh Mặt Trời
         earthMesh.rotation.y += EARTH_ROT_SPEED * speed;
-        moon.rotation.y += MOON_ROT_SPEED * speed;
         earthOrbit.rotation.y += EARTH_ORBIT_SPEED * speed;
+
+        // 🌙 Mặt Trăng quay quanh trục và quanh Trái Đất
+        moon.rotation.y += MOON_ROT_SPEED * speed;
         moonOrbit.rotation.y += MOON_ORBIT_SPEED * speed;
       }
 
