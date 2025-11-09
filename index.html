@@ -95,8 +95,27 @@
 
   <button class="control-btn" id="toggleButton">⏸️ Dừng</button>
 
-  <!-- 🔊 Nhạc nền tự động phát -->
-  <audio id="bgMusic" src="vutru.mp3" autoplay loop muted></audio>
+<!-- 🔊 Nhạc nền vũ trụ -->
+<audio id="bgMusic" src="vutru.mp3" autoplay loop muted></audio>
+
+<script>
+  const bgMusic = document.getElementById('bgMusic');
+  bgMusic.volume = 0.4;
+
+  // Một số trình duyệt yêu cầu kích hoạt sau khi người dùng tương tác đầu tiên
+  document.addEventListener('click', function enableMusic() {
+    bgMusic.muted = false;
+    bgMusic.play().catch(err => console.log('Không phát được nhạc:', err));
+    document.removeEventListener('click', enableMusic);
+  });
+
+  // Safari cần thêm khởi động âm thanh sau khi di chuyển chuột hoặc chạm màn hình
+  document.addEventListener('mousemove', function startMusic() {
+    bgMusic.muted = false;
+    bgMusic.play().catch(()=>{});
+    document.removeEventListener('mousemove', startMusic);
+  });
+</script>
 
   <!-- 🔽 Dòng chữ chạy -->
   <div id="marquee-text">
