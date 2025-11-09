@@ -95,9 +95,8 @@
 
   <button class="control-btn" id="toggleButton">⏸️ Dừng</button>
 
-  <!-- 🔽 Dòng chữ chạy -->
   <div id="marquee-text">
-    <span>🌌 Mô Phỏng Chuyển Động Hệ Mặt Trời - Trái Đất - Mặt Trăng 🌍 | Tác giả: Nguyễn Đức Anh 9A | Giáo Viên Hướng Dẫn: Nguyễn Duy Quyền 🌞</span>
+    <span>🌌 Mô Phỏng Chuyển Động Hệ Mặt Trời - CHỈ MẶT TRỜI QUAY 🌍 | Tác giả: Nguyễn Đức Anh 9A | Giáo Viên Hướng Dẫn: Nguyễn Duy Quyền 🌞</span>
   </div>
 
   <script>
@@ -120,7 +119,7 @@
 
     // --- ẢNH NỀN VŨ TRỤ ---
     const textureLoader = new THREE.TextureLoader();
-    const spaceTexture = textureLoader.load('space-bg.jpg'); // ảnh nền vũ trụ
+    const spaceTexture = textureLoader.load('sao.jpg'); // ảnh nền (đặt cùng thư mục)
     scene.background = spaceTexture;
 
     // --- THAM SỐ VẬT LÝ ---
@@ -128,14 +127,10 @@
     const ORBIT_RADIUS = 30; 
     const MOON_ORBIT_RADIUS = 5; 
     const BASE_SPEED = 0.0003; 
-
-    // ⚙️ Điều chỉnh tốc độ quay và quỹ đạo
-    const SUN_ROT_SPEED = 0.0001;        // Mặt Trời quay nhanh hơn (có thể nhìn thấy)
+    const SUN_ROT_SPEED = 0.00003; 
     const EARTH_ORBIT_SPEED = BASE_SPEED * 1; 
-    const EARTH_ROT_SPEED = BASE_SPEED * 120;  // 🌍 Trái Đất quay chậm lại (trước là 365)
+    const EARTH_ROT_SPEED = BASE_SPEED * 365.25; 
     const MOON_ORBIT_SPEED = BASE_SPEED * 12.17; 
-    const MOON_ROT_SPEED = BASE_SPEED * 120;   // 🌙 Mặt Trăng quay chậm hơn
-
     let simulationSpeed = 1.0; 
     let isRunning = true;
 
@@ -156,7 +151,7 @@
     // --- TRÁI ĐẤT ---
     const earthGeometry = new THREE.SphereGeometry(1.5, 32, 32);
     const earthMaterial = new THREE.MeshPhongMaterial({ 
-      map: textureLoader.load('earth.jpg'),
+      map: textureLoader.load('earth.gif'),
       specular: 0x333333,
       shininess: 15
     });
@@ -172,7 +167,7 @@
     // --- MẶT TRĂNG ---
     const moonGeometry = new THREE.SphereGeometry(0.4, 32, 32);
     const moonMaterial = new THREE.MeshPhongMaterial({
-      map: textureLoader.load('moon.jpg')
+      map: textureLoader.load('moon.gif')
     });
     const moon = new THREE.Mesh(moonGeometry, moonMaterial);
     moon.position.set(MOON_ORBIT_RADIUS, 0, 0); 
@@ -202,16 +197,16 @@
 
       if (isRunning) {
         const speed = simulationSpeed; 
-        // 🌞 Mặt Trời quay quanh trục
+        
+        // 🚀 CHỈ GIỮ LẠI DÒNG NÀY ĐỂ MẶT TRỜI QUAY
         sun.rotation.y += SUN_ROT_SPEED * speed;
-
-        // 🌍 Trái Đất quay quanh trục và quay quanh Mặt Trời
-        earthMesh.rotation.y += EARTH_ROT_SPEED * speed;
-        earthOrbit.rotation.y += EARTH_ORBIT_SPEED * speed;
-
-        // 🌙 Mặt Trăng quay quanh trục và quanh Trái Đất
-        moon.rotation.y += MOON_ROT_SPEED * speed;
-        moonOrbit.rotation.y += MOON_ORBIT_SPEED * speed;
+        
+        // VÔ HIỆU HÓA CHUYỂN ĐỘNG CỦA TRÁI ĐẤT & MẶT TRĂNG (Giữ nguyên các dòng này không có thay đổi logic)
+        // Dữ liệu ban đầu:
+        // earthMesh.rotation.y += EARTH_ROT_SPEED * speed;
+        // moon.rotation.y += EARTH_ROT_SPEED * speed;
+        // earthOrbit.rotation.y += EARTH_ORBIT_SPEED * speed;
+        // moonOrbit.rotation.y += MOON_ORBIT_SPEED * speed;
       }
 
       renderer.render(scene, camera);
