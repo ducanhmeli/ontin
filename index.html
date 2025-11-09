@@ -171,7 +171,7 @@
     // --- MẶT TRĂNG ---
     const moonGeometry = new THREE.SphereGeometry(0.4, 32, 32);
     const moonMaterial = new THREE.MeshPhongMaterial({
-      map: textureLoader.load('moon.gif')
+      map: textureLoader.load('moon.jpg')
     });
     const moon = new THREE.Mesh(moonGeometry, moonMaterial);
     moon.position.set(MOON_ORBIT_RADIUS, 0, 0); 
