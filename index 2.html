@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mô phỏng Mặt Trời - Trái Đất - Mặt Trăng</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-image: url('sao.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      font-size: 10px;
+      width: 40em;
+      height: 40em;
+      position: relative;
+    }
+
+    .sun {
+      position: absolute;
+      top: 15em;
+      left: 15em;
+      width: 10em;
+      height: 10em;
+      border-radius: 50%;
+      background-image: url('sun.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 3em yellow, 0 0 6em orange;
+      animation: spin 20s linear infinite;
+    }
+
+    .earth,
+    .moon {
+      position: absolute;
+      border-style: solid;
+      border-color: white transparent transparent transparent;
+      border-width: 0.1em 0.1em 0 0;
+      border-radius: 50%;
+    }
+
+    .earth {
+      top: 5em;
+      left: 5em;
+      width: 30em;
+      height: 30em;
+      animation: orbit 36.5s linear infinite;
+    }
+
+    .moon {
+      top: 0;
+      right: 0;
+      width: 8em;
+      height: 8em;
+      animation: orbit 2.7s linear infinite;
+    }
+
+    .earth::before {
+      content: '';
+      position: absolute;
+      top: 2.8em;
+      right: 2.8em;
+      width: 3em;
+      height: 3em;
+      background-image: url('earth.jpg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      animation: rotateEarth 5s linear infinite;
+      box-shadow: 0 0 1em cyan;
+      z-index: 1;
+    }
+
+    .moon::before {
+      content: '';
+      position: absolute;
+      top: 0.8em;
+      right: 0.2em;
+      width: 1.2em;
+      height: 1.2em;
+      background-image: url('moon.jpg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      box-shadow: 0 0 0.5em white;
+    }
+
+    /* 🌑 Bóng tối - làm mờ nhẹ để vẫn thấy phần sáng */
+    .shadow-fixed {
+      position: absolute;
+      top: 2.8em;
+      right: 2.8em;
+      width: 3em;
+      height: 3em;
+      border-radius: 50%;
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.6) 50%, rgba(0,0,0,0) 50%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @keyframes rotateEarth { to { transform: rotate(360deg); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #toggleBtn {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid white;
+      color: white;
+      font-size: 1.2em;
+      font-weight: bold;
+      padding: 0.6em 1.2em;
+      border-radius: 0.5em;
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+      transition: all 0.3s;
+      z-index: 100;
+    }
+
+    #toggleBtn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateX(-50%) scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sun"></div>
+    <div class="earth">
+      <div class="moon"></div>
+      <div class="shadow-fixed"></div>
+    </div>
+  </div>
+
+  <button id="toggleBtn">⏸ Dừng</button>
+
+  <script>
+    let running = true;
+    const btn = document.getElementById('toggleBtn');
+
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.sun, .earth, .moon').forEach(el => {
+        el.style.animationPlayState = running ? 'paused' : 'running';
+      });
+      btn.textContent = running ? '▶️ Chạy' : '⏸ Dừng';
+      running = !running;
+    });
+  </script>
+</body>
+</html>
